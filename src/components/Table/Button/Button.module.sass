@@ -1,0 +1,27 @@
+@use '../../../styles/_variables' as var
+@use '../../../styles/_mixins' as mix
+@use '../TableCell/TableCell.module'
+
+.button
+  @extend .tablecell
+  background-color: transparent
+  border: 1px solid var.$gray-stroke
+  cursor: pointer
+  &__icon
+    @extend .tablecell__icon
+    border: 1px solid var.$font-disabled
+    > svg
+      fill: var.$font-disabled
+  &__text
+    grid-area: info
+    align-self: center
+    @include mix.font-style (var.$font-disabled, 14px, 500, 1.25px, 14px)
+  &:hover
+    background-color: var.$white
+    border-color: var.$opea-color
+    .button__icon
+      border-color: var.$opea-color
+      > svg
+        fill: var.$opea-color
+    .button__text
+      color: var.$opea-color
