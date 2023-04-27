@@ -1,0 +1,23 @@
+@use '../../styles/_variables' as var
+@use '../../styles/_mixins' as mix
+
+.form
+  --pad: 6px
+  --pad-top: 2rem
+  padding: var(--pad-top) 2rem 12px
+  position: relative
+  > svg
+    color: var.$opea-color
+    position: absolute
+    right: calc(var(--pad-top) + var(--pad))
+    top: calc(var(--pad-top) + var(--pad))
+
+.input
+  display: block
+  background: var.$white
+  border: 1px solid var.$gray-stroke
+  border-radius: 4px
+  margin-left: auto
+  padding: var(--pad) 14px
+  min-width: 280px
+  @include mix.font-style (var.$font-color, 14px, 400, 0.15px, 16px)

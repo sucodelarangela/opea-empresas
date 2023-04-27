@@ -6,6 +6,7 @@
   margin: 0
 
 body
+  background-color: var.$gray-bg
   font-family: var.$jost
 
 header
@@ -16,3 +17,15 @@ header
   margin: 0 auto
   max-width: 1280px
   width: 100%
+
+// Esconde itens da tela, porém mantém visível à leitores de tela
+.sr-only
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  white-space: nowrap
+  border-width: 0

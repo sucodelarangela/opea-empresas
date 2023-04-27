@@ -1,4 +1,5 @@
 @use '../../styles/_variables' as var
+@use '../../styles/_mixins' as mix
 
 .header_content
   display: flex
@@ -11,11 +12,7 @@
   align-items: center
   gap: 13px
   > p
-    color: var.$font-disabled
-    font-size: 14px
-    font-weight: 500
-    letter-spacing: 1px
-    line-height: 14px
+    @include mix.font-style (var.$font-disabled, 14px, 500, 1px, 14px)
   > svg
     fill: var.$opea-color
     opacity: 0.4
