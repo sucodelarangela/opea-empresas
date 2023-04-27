@@ -1,16 +1,30 @@
 import styles from './Modal.module.sass';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaTrashAlt } from 'react-icons/fa';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 interface Props {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Modal = ({ setModalOpen }: Props) => {
+  useEffect(() => {
+    function handleEscapeKey(e: KeyboardEvent) {
+      if (e.code === 'Escape') {
+        setModalOpen(false);
+      }
+    }
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, []);
+
   return (
     <>
-      <div className={styles.overlay}></div>
+      <div
+        className={styles.overlay}
+        onClick={() => setModalOpen(false)}
+      ></div>
       <div className={styles.modal}>
         <div className={styles.modal__header}>
           <h2>Cadastrar Empresa</h2>
