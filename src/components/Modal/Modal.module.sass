@@ -1,0 +1,76 @@
+@use '../../styles/_variables' as var
+@use '../../styles/_mixins' as mix
+
+.overlay
+  background-color: var.$opea-color
+  inset: 0
+  opacity: .4
+  position: fixed
+  z-index: 1
+
+.modal
+  background-color: var.$white
+  left: 50%
+  top: 50%
+  position: fixed
+  transform: translate(-50%, -50%)
+  width: 20rem
+  z-index: 2
+  &__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    border-bottom: 1px solid var.$gray-stroke
+    padding: 8px 16px
+    > h2
+      @include mix.font-style (var.$font-color, 16px, 400, 1px, 24px)
+    > svg
+      fill: var.$font-color
+      cursor: pointer
+      &:hover
+        fill: var.$opea-color
+  &__form
+    display: flex
+    flex-direction: column
+    gap: 8px
+    padding: 16px 24px 24px
+    fieldset
+      border: none
+      label
+        display: block
+        font-family: var.$roboto
+        @include mix.font-style (var.$opea-color, 12px, 400, inherit, 24px)
+      input
+        border: 1px solid var.$gray-stroke
+        border-radius: 2px
+        padding: 8px
+        width: 100%
+        @include mix.font-style (var.$font-color, 16px, 400, inherit, 24px)
+  &__footer
+    display: flex
+    justify-content: space-between
+    padding-top: 24px
+    .delete
+      background-color: var.$white
+      border: 1px solid var.$gray-stroke
+      border-radius: 4px
+      padding: 8px
+      > svg
+        fill: var.$opea-color
+      &:hover
+        background-color: var.$gray-stroke
+    div
+      display: flex
+      gap: 16px
+      > .cancel
+        @extend .delete
+        padding: 8px 12px
+        @include mix.font-style (var.$font-color, 14px, 500, 1px, 14px)
+      > .register
+        @extend .cancel
+        background-color: var.$opea-color
+        border: none
+        @include mix.font-style (var.$white, 14px, 500, 1px, 14px)
+        &:hover
+          background-color: var.$opea-color
+          opacity: 0.8
