@@ -1,0 +1,21 @@
+@use '../../styles/_variables' as var
+
+.header_content
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 1rem 2rem
+
+.user
+  display: flex
+  align-items: center
+  gap: 13px
+  > p
+    color: var.$font-disabled
+    font-size: 14px
+    font-weight: 500
+    letter-spacing: 1px
+    line-height: 14px
+  > svg
+    fill: var.$opea-color
+    opacity: 0.4
