@@ -1,0 +1,31 @@
+@use '../../../styles/_variables' as var
+@use '../../../styles/_mixins' as mix
+
+.tablecell
+  display: grid
+  grid-template-areas: 'icon info'
+  grid-template-columns: 48px 1fr
+  gap: 1rem
+  background-color: var.$white
+  border-radius: 35px 4px 4px 35px
+  padding: 8px
+  &__icon
+    grid-area: icon
+    display: flex
+    align-items: center
+    align-self: center
+    justify-content: center
+    background-color: var.$icon-bg
+    border: 1px solid var.$font-color
+    border-radius: 50%
+    height: 40px
+    width: 40px
+    > svg
+      fill: var.$font-color
+  &__info
+    > h2
+      @include mix.font-style (var.$font-color, 16px, 400, inherit, 20px)
+    > h3
+      @include mix.font-style (var.$font-color, 13px, 400, inherit, 18px)
+      > span
+        @include mix.font-style (var.$font-color, 12px, 400, inherit, 16px)
