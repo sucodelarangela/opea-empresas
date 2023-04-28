@@ -20,6 +20,6 @@ const requests = {
 export const Clients = {
   getClients: (): Promise<IClient[]> => requests.get('/'),
   postClient: (client: IClient): Promise<IClient> => requests.post('/', client),
-  updateClient: (client: IClient, id: number): Promise<IClient> => requests.put(`/${id}`, client),
-  deleteClient: (id: number): Promise<void> => requests.delete(`/${id}`)
+  updateClient: (client: IClient, id: string): Promise<IClient> => requests.put(`/${id}`, client),
+  deleteClient: (id: string): Promise<void> => requests.delete(`/${id}`)
 };

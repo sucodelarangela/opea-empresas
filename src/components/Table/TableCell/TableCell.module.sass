@@ -3,8 +3,8 @@
 
 .tablecell
   display: grid
-  grid-template-areas: 'icon info'
-  grid-template-columns: 48px 1fr
+  grid-template-areas: 'icon info edit'
+  grid-template-columns: 48px 1fr 1fr
   gap: 1rem
   background-color: var.$white
   border-radius: 35px 4px 4px 35px
@@ -30,3 +30,14 @@
       @include mix.font-style (var.$font-color, 13px, 400, inherit, 18px)
       > span
         @include mix.font-style (var.$font-color, 12px, 400, inherit, 16px)
+  &__action
+    grid-area: edit
+    margin: auto 0
+    button
+      background-color: var.$opea-color
+      border: none
+      border-radius: 4px
+      padding: 4px
+      @include mix.font-style (var.$white, 12px, 500, 1px, 18px)
+      &:hover
+        opacity: 0.8
