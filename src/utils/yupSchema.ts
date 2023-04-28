@@ -10,6 +10,6 @@ export const yupSchema = yup.object({
     .min(14, 'O CNPJ deve conter exatamente 14 dígitos')
     .max(14, 'O CNPJ deve conter exatamente 14 dígitos'),
   email: yup.string()
-    .email()
+    .email('Formato de e-mail inválido.')
     .required('Campo obrigatório.')
 });

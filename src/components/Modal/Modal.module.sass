@@ -46,6 +46,13 @@
         padding: 8px
         width: 100%
         @include mix.font-style (var.$font-color, 16px, 400, inherit, 24px)
+        &.error
+          border: 1px solid var.$danger
+          outline: transparent
+      span
+        font-family: var.$roboto
+        @include mix.font-style (var.$danger, 12px, 700, 1px, 16px)
+
   &__footer
     display: flex
     justify-content: space-between

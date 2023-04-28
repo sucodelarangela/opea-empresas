@@ -18,7 +18,10 @@ export const Modal = ({ setModalOpen }: Props) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<IClient>({ resolver: yupResolver(yupSchema) });
+  } = useForm<IClient>({
+    mode: 'onChange',
+    resolver: yupResolver(yupSchema)
+  });
 
   // Função para submit do formulário
   const registerClient = (data: IClient) => {
@@ -63,6 +66,7 @@ export const Modal = ({ setModalOpen }: Props) => {
           <fieldset>
             <label htmlFor='name'>Nome</label>
             <input
+              className={errors.name && styles.error}
               type='text'
               id='name'
               {...register('name')}
@@ -72,6 +76,7 @@ export const Modal = ({ setModalOpen }: Props) => {
           <fieldset>
             <label htmlFor='cnpj'>CNPJ</label>
             <input
+              className={errors.cnpj && styles.error}
               type='text'
               id='cnpj'
               {...register('cnpj')}
@@ -81,6 +86,7 @@ export const Modal = ({ setModalOpen }: Props) => {
           <fieldset>
             <label htmlFor='email'>E-mail</label>
             <input
+              className={errors.email && styles.error}
               type='email'
               id='email'
               {...register('email')}
