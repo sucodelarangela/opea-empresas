@@ -7,12 +7,15 @@ import { IClient } from 'interfaces/IClient';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Clients } from 'api/api';
+import { useClientContext } from 'context/ClientContext';
 
 interface Props {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Modal = ({ setModalOpen }: Props) => {
+  const { setClients } = useClientContext();
+
   // Funções do react-hook-form para validação dos dados antes do envio à API
   const {
     register,
@@ -30,7 +33,11 @@ export const Modal = ({ setModalOpen }: Props) => {
       cnpj: data.cnpj,
       email: data.email
     };
-    Clients.postClient(client);
+    Clients.postClient(client)
+      .then(data => {
+        setClients?.(prevClients => [...prevClients, data]);
+        setModalOpen(false);
+      });
   };
 
   // Acessibilidade: Fechando a Modal com a tecla ESC

@@ -1,23 +1,17 @@
 import styles from './Table.module.sass';
-import { useEffect, useState } from 'react';
-import { Clients } from 'api/api';
-import { IClient } from 'interfaces/IClient';
 import { TableCell } from './TableCell';
 import { Button } from './Button';
+import { useClientContext } from 'context/ClientContext';
+import { Loader } from 'components/Loader';
 
 export const Table = () => {
-  const [clients, setClients] = useState<IClient[]>([]);
-
-  useEffect(() => {
-    Clients.getClients()
-      .then(data => {
-        setClients(data);
-      });
-  }, []);
+  const { clients, error, loading } = useClientContext();
 
   return (
     <section className={`container ${styles.table}`}>
       <Button />
+      {error && <p>{error}</p>}
+      {loading && <Loader />}
       {clients && clients.map(client => (
         <TableCell
           key={client.id}

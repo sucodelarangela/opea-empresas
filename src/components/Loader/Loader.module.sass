@@ -1,0 +1,14 @@
+.loader
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 80px
+  &__img
+    width: 40px
+    animation: rotate-center 2s ease-in-out infinite both
+
+  @keyframes rotate-center
+    0%
+      transform: rotate(0)
+    100%
+      transform: rotate(360deg)

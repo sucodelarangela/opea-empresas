@@ -8,12 +8,15 @@ import { yupSchema } from 'utils/yupSchema';
 import { IClient } from 'interfaces/IClient';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaTrashAlt } from 'react-icons/fa';
+import { useClientContext } from 'context/ClientContext';
 
 interface Props extends IClient {
   setEditModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) => {
+  const { setClients } = useClientContext();
+
   // Funções do react-hook-form para validação dos dados antes do envio à API
   const {
     register,
@@ -36,12 +39,25 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
       cnpj: data.cnpj,
       email: data.email
     };
-    Clients.updateClient(client, id!);
+    Clients.updateClient(client, id!)
+      .then(() => {
+        Clients.getClients()
+          .then(data => {
+            setClients?.(data);
+            setEditModalOpen(false);
+          });
+      });
   };
 
   // Deletar empresa
   const deleteClient = (id: string) => {
-    if (window.confirm('Deseja realmente excluir esta empresa?')) Clients.deleteClient(id);
+    if (window.confirm('Deseja realmente excluir esta empresa?')) {
+      Clients.deleteClient(id);
+      setClients?.(prevClients => prevClients.filter(client => {
+        return client.id !== id;
+      }));
+      setEditModalOpen(false);
+    }
   };
 
   // Acessibilidade: Fechando a Modal com a tecla ESC
