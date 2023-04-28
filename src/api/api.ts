@@ -19,6 +19,7 @@ const requests = {
 // Objeto `Clients` que usa o objeto `requests`para executar as operações de CRUD.
 export const Clients = {
   getClients: (): Promise<IClient[]> => requests.get('/'),
+  searchClient: (query: string): Promise<IClient[]> => requests.get(`?text=${query}`),
   postClient: (client: IClient): Promise<IClient> => requests.post('/', client),
   updateClient: (client: IClient, id: string): Promise<IClient> => requests.put(`/${id}`, client),
   deleteClient: (id: string): Promise<void> => requests.delete(`/${id}`)

@@ -1,6 +1,13 @@
+@use '../../styles/_variables' as var
+@use '../../styles/_mixins' as mix
+
 .table
   display: flex
   flex-direction: column
   gap: 6px
   padding: 0 2rem
   width: 100%
+
+.error
+  text-align: center
+  @include mix.font-style (var.$danger, 18px, 500, 1px, 24px)

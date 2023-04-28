@@ -15,7 +15,11 @@ interface Props extends IClient {
 }
 
 export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) => {
-  const { setClients } = useClientContext();
+  const { setLoading, setClients } = useClientContext();
+
+  useEffect(() => {
+    setLoading?.(false);
+  }, []);
 
   // Funções do react-hook-form para validação dos dados antes do envio à API
   const {

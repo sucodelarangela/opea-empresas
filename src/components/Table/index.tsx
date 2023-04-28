@@ -10,7 +10,7 @@ export const Table = () => {
   return (
     <section className={`container ${styles.table}`}>
       <Button />
-      {error && <p>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       {loading && <Loader />}
       {clients && clients.map(client => (
         <TableCell
