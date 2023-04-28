@@ -5,12 +5,12 @@ export const Search = () => {
   return (
     <form className={`container ${styles.form}`}>
       <label
-        htmlFor="search"
+        htmlFor='search'
         className='sr-only'
       >Buscar empresa...</label>
       <input
         className={styles.input}
-        type="text"
+        type='text'
         id='search'
         name='search'
         placeholder='Buscar empresa...'

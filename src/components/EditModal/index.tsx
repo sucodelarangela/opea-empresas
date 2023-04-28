@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import styles from '../Modal/Modal.module.sass';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { Clients } from 'api/api';
@@ -35,8 +36,12 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
       cnpj: data.cnpj,
       email: data.email
     };
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     Clients.updateClient(client, id!);
+  };
+
+  // Deletar empresa
+  const deleteClient = (id: string) => {
+    if (window.confirm('Deseja realmente excluir esta empresa?')) Clients.deleteClient(id);
   };
 
   // Acessibilidade: Fechando a Modal com a tecla ESC
@@ -103,6 +108,7 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
             <button
               type='button'
               className={styles.delete}
+              onClick={() => deleteClient(id!)}
             >
               <FaTrashAlt size={14} />
             </button>
