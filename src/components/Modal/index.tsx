@@ -1,13 +1,36 @@
 import styles from './Modal.module.sass';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { yupSchema } from 'utils/yupSchema';
+import { IClient } from 'interfaces/IClient';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { FaTrashAlt } from 'react-icons/fa';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Clients } from 'api/api';
 
 interface Props {
   setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Modal = ({ setModalOpen }: Props) => {
+  // Funções do react-hook-form para validação dos dados antes do envio à API
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<IClient>({ resolver: yupResolver(yupSchema) });
+
+  // Função para submit do formulário
+  const registerClient = (data: IClient) => {
+    const client = {
+      name: data.name,
+      cnpj: data.cnpj,
+      email: data.email
+    };
+    Clients.postClient(client);
+  };
+
+  // Acessibilidade: Fechando a Modal com a tecla ESC
   useEffect(() => {
     function handleEscapeKey(e: KeyboardEvent) {
       if (e.code === 'Escape') {
@@ -33,27 +56,36 @@ export const Modal = ({ setModalOpen }: Props) => {
             onClick={() => setModalOpen(false)}
           />
         </div>
-        <form className={styles.modal__form}>
+        <form
+          onSubmit={handleSubmit(registerClient)}
+          className={styles.modal__form}
+        >
           <fieldset>
             <label htmlFor='name'>Nome</label>
             <input
               type='text'
               id='name'
+              {...register('name')}
             />
+            {errors.name && <span className='error'>{errors.name.message}</span>}
           </fieldset>
           <fieldset>
             <label htmlFor='cnpj'>CNPJ</label>
             <input
               type='text'
               id='cnpj'
+              {...register('cnpj')}
             />
+            {errors.cnpj && <span className='error'>{errors.cnpj.message}</span>}
           </fieldset>
           <fieldset>
             <label htmlFor='email'>E-mail</label>
             <input
               type='email'
               id='email'
+              {...register('email')}
             />
+            {errors.email && <span className='error'>{errors.email.message}</span>}
           </fieldset>
           <div className={styles.modal__footer}>
             <button
