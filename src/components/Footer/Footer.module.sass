@@ -1,0 +1,10 @@
+@use '../../styles/_variables' as var
+@use '../../styles/_mixins' as mix
+
+.footer
+  background-color: var.$white
+  padding: 2rem 2rem
+  text-align: center
+  width: 100%
+  > p
+    @include mix.font-style (var.$font-disabled, 14px, 500, 1px, 14px)

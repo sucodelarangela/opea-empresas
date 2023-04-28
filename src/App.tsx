@@ -1,3 +1,4 @@
+import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { Search } from 'components/Search';
 import { Table } from 'components/Table';
@@ -11,6 +12,7 @@ function App() {
         <Search />
         <Table />
       </main>
+      <Footer />
     </ClientProvider>
   );
 }

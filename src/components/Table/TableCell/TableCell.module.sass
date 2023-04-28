@@ -4,7 +4,7 @@
 .tablecell
   display: grid
   grid-template-areas: 'icon info edit'
-  grid-template-columns: 48px 1fr 1fr
+  grid-template-columns: 48px 1fr 60px
   gap: 1rem
   background-color: var.$white
   border-radius: 35px 4px 4px 35px
@@ -37,7 +37,7 @@
       background-color: var.$opea-color
       border: none
       border-radius: 4px
-      padding: 4px
+      padding: 4px 8px
       @include mix.font-style (var.$white, 12px, 500, 1px, 18px)
       &:hover
         opacity: 0.8
