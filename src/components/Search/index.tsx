@@ -39,6 +39,7 @@ export const Search = () => {
       />
       <button
         type='submit'
+        aria-label='Fazer busca'
       >
         <FaSearch
           size={16}
