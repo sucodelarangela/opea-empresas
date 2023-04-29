@@ -82,9 +82,14 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
         className={styles.overlay}
         onClick={() => setEditModalOpen(false)}
       ></div>
-      <div className={styles.modal}>
+      <div
+        className={styles.modal}
+        aria-modal='true'
+        aria-labelledby='modal__header--title'
+        role='dialog'
+      >
         <div className={styles.modal__header}>
-          <h2>Atualizar Empresa</h2>
+          <h2 id='modal__header--title'>Atualizar Empresa</h2>
           <IoMdCloseCircle
             size={16}
             onClick={() => setEditModalOpen(false)}
@@ -95,7 +100,10 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
           className={styles.modal__form}
         >
           <fieldset>
-            <label htmlFor='name'>Nome</label>
+            <label
+              htmlFor='name'
+              aria-label={errors.name ? `Nome: ${errors.name.message}` : 'Nome'}
+            >Nome</label>
             <input
               className={errors.name && styles.error}
               type='text'
@@ -105,7 +113,10 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
             {errors.name && <span className='error'>{errors.name.message}</span>}
           </fieldset>
           <fieldset>
-            <label htmlFor='cnpj'>CNPJ</label>
+            <label
+              htmlFor='cnpj'
+              aria-label={errors.cnpj ? `CNPJ: ${errors.cnpj.message}` : 'CNPJ'}
+            >CNPJ</label>
             <input
               className={errors.cnpj && styles.error}
               type='text'
@@ -115,7 +126,10 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
             {errors.cnpj && <span className='error'>{errors.cnpj.message}</span>}
           </fieldset>
           <fieldset>
-            <label htmlFor='email'>E-mail</label>
+            <label
+              htmlFor='email'
+              aria-label={errors.email ? `E-mail: ${errors.email.message}` : 'E-mail'}
+            >E-mail</label>
             <input
               className={errors.email && styles.error}
               type='email'
@@ -129,6 +143,7 @@ export const EditModal = ({ id, name, cnpj, email, setEditModalOpen }: Props) =>
               type='button'
               className={styles.delete}
               onClick={() => deleteClient(id!)}
+              aria-label='Excluir cadastro'
             >
               <FaTrashAlt size={14} />
             </button>

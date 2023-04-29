@@ -9,7 +9,10 @@ export const TableCell = (client: IClient) => {
 
   return (
     <>
-      <div className={styles.tablecell}>
+      <div
+        className={styles.tablecell}
+        tabIndex={0}
+      >
         <div className={styles.tablecell__icon}>
           <FaClipboardList size={20} />
         </div>

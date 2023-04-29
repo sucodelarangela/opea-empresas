@@ -58,9 +58,14 @@ export const Modal = ({ setModalOpen }: Props) => {
         className={styles.overlay}
         onClick={() => setModalOpen(false)}
       ></div>
-      <div className={styles.modal}>
+      <div
+        className={styles.modal}
+        aria-modal='true'
+        aria-labelledby='modal__header--title'
+        role='alertdialog'
+      >
         <div className={styles.modal__header}>
-          <h2>Cadastrar Empresa</h2>
+          <h2 id='modal__header--title'>Cadastrar Empresa</h2>
           <IoMdCloseCircle
             size={16}
             onClick={() => setModalOpen(false)}
@@ -71,7 +76,10 @@ export const Modal = ({ setModalOpen }: Props) => {
           className={styles.modal__form}
         >
           <fieldset>
-            <label htmlFor='name'>Nome</label>
+            <label
+              htmlFor='name'
+              aria-label={errors.name ? `Nome: ${errors.name.message}` : 'Nome'}
+            >Nome</label>
             <input
               className={errors.name && styles.error}
               type='text'
@@ -81,7 +89,10 @@ export const Modal = ({ setModalOpen }: Props) => {
             {errors.name && <span className='error'>{errors.name.message}</span>}
           </fieldset>
           <fieldset>
-            <label htmlFor='cnpj'>CNPJ</label>
+            <label
+              htmlFor='cnpj'
+              aria-label={errors.cnpj ? `CNPJ: ${errors.cnpj.message}` : 'CNPJ'}
+            >CNPJ</label>
             <input
               className={errors.cnpj && styles.error}
               type='text'
@@ -91,7 +102,10 @@ export const Modal = ({ setModalOpen }: Props) => {
             {errors.cnpj && <span className='error'>{errors.cnpj.message}</span>}
           </fieldset>
           <fieldset>
-            <label htmlFor='email'>E-mail</label>
+            <label
+              htmlFor='email'
+              aria-label={errors.email ? `E-mail: ${errors.email.message}` : 'E-mail'}
+            >E-mail</label>
             <input
               className={errors.email && styles.error}
               type='email'
@@ -104,6 +118,9 @@ export const Modal = ({ setModalOpen }: Props) => {
             <button
               type='button'
               className={styles.delete}
+              onClick={() => setModalOpen(false)}
+              tabIndex={1}
+              aria-hidden='true'
             >
               <FaTrashAlt size={14} />
             </button>
