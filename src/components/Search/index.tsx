@@ -37,10 +37,13 @@ export const Search = () => {
         ref={inputRef}
         onChange={(e) => handleValue(e)}
       />
-      <FaSearch
-        size={16}
-        aria-hidden='true'
-      />
+      <button
+        type='submit'
+      >
+        <FaSearch
+          size={16}
+        />
+      </button>
     </form>
   );
 };

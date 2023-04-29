@@ -14,7 +14,11 @@ interface Props {
 }
 
 export const Modal = ({ setModalOpen }: Props) => {
-  const { setClients } = useClientContext();
+  const { setClients, setLoading } = useClientContext();
+
+  useEffect(() => {
+    setLoading?.(false);
+  }, []);
 
   // Funções do react-hook-form para validação dos dados antes do envio à API
   const {

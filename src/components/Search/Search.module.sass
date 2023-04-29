@@ -6,11 +6,18 @@
   --pad-top: 2rem
   padding: var(--pad-top) 2rem 12px
   position: relative
-  > svg
-    color: var.$opea-color
+  > button
+    border: none
+    border-radius: 0 4px 4px 0
+    background-color: transparent
+    padding: var(--pad)
     position: absolute
-    right: calc(var(--pad-top) + var(--pad))
-    top: calc(var(--pad-top) + var(--pad))
+    right: var(--pad-top)
+    top: var(--pad-top)
+    > svg
+      fill: var.$font-color
+    &:hover svg, &:focus svg
+      fill: var.$opea-color
 
 .input
   display: block
