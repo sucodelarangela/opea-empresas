@@ -23,8 +23,8 @@ Para este teste técnico foram utilizadas as seguintes tecnologias:
 | -------------- | --- |
 | ✨ Nome        | **Opea Empresas** |
 | 🏷️ Tecnologias | React, TypeScript, Sass, Axios, Vite, React-Hook-Form, Yup |
-| 🚀 URL         | **https://opea-empresas.vercel.app/** |
 | 🎨 Design      | [**https://www.figma.com/**](https://www.figma.com/file/Hf7NUmMtjL2iWpPy7SMgKf/TesteFront?type=design&node-id=1-144&t=WkC4n0Sx0v9TGkny-0) |
+<!--| 🚀 URL         | **https://opea-empresas.vercel.app/** |-->
 
 ![](./public/ogimage.png#vitrinedev)
 
