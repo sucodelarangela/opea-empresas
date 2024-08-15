@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { IClient } from 'interfaces/IClient';
 
 export const api = axios.create({
-  baseURL: 'https://homolog.planetasec.com.br/prova/front/api/clients'
+  baseURL: 'https://outros.opea-uat.solutions/prova/front/api'
 });
 
 // Destruturando o axios e recebendo o objeto `data` de dentro dele
